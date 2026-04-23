@@ -1,14 +1,21 @@
 ---
 import '../styles/global.css';
 
+import ScrollToTop from '../components/ScrollToTop.astro';
+import MobileFloatingBar from '../components/MobileFloatingBar.astro';
+import GoogleReviewsBadge from '../components/GoogleReviewsBadge.astro';
+import ChatWidget from '../components/ChatWidget';
+
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
 
 const {
   title = "MicroManaged Media | Google Ads & Lead Generation for Contractors",
-  description = "Lead generation systems built for local service contractors. Google Ads management, AI answering, call tracking, contractor websites & Google Maps optimization. If the phone isn't ringing — we fix that."
+  description = "Lead generation systems built for local service contractors. Google Ads management, AI answering, call tracking, contractor websites & Google Maps optimization. If the phone isn't ringing — we fix that.",
+  canonical = "https://micromanagedmedia.com"
 } = Astro.props;
 ---
 
@@ -20,10 +27,10 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     
-    <link rel="canonical" href="https://micromanagedmedia.com" />
+    <link rel="canonical" href={canonical} />
     
-    <meta property="og:title" content="MicroManaged Media | Google Ads & Lead Generation for Contractors" />
-    <meta property="og:description" content="Lead generation systems built for local service contractors. Google Ads management, AI answering, call tracking, contractor websites & Google Maps optimization. If the phone isn't ringing — we fix that." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://micromanagedmedia.com/og-image.jpg" />
     <meta property="og:url" content="https://micromanagedmedia.com" />
@@ -79,7 +86,11 @@ const {
 }
     `} />
   </head>
-  <body class="bg-background text-foreground font-sans antialiased flex flex-col min-h-screen">
+  <body class="bg-background text-foreground font-sans antialiased flex flex-col min-h-screen relative pb-16 md:pb-0">
     <slot />
+    <MobileFloatingBar />
+    <GoogleReviewsBadge />
+    <ChatWidget client:only="react" />
+    <ScrollToTop />
   </body>
 </html>

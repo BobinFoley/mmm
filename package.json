@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "astro dev --port=3000 --host=0.0.0.0",
     "build": "astro build",
+    "start": "astro dev --port=3000 --host=0.0.0.0",
     "preview": "astro preview",
     "clean": "rm -rf dist",
     "lint": "astro check"
   },
   "dependencies": {
+    "@astrojs/node": "^10.0.6",
     "@astrojs/react": "^5.0.4",
     "@google/genai": "^1.29.0",
     "@tailwindcss/vite": "^4.1.14",
