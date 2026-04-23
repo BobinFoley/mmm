@@ -1,0 +1,49 @@
+---
+// ClientBar.astro
+const logos = [
+  "https://images.fillout.com/orgid-30300/flowpublicid-f4gvodhkuc/widgetid-default/sunKo2ei6JJKs9kNfFtp7Y/pasted-image-1775595367367.jpg",
+  "https://images.fillout.com/orgid-30300/flowpublicid-f4gvodhkuc/widgetid-default/dHEMQ8UreY78R5f2PbXgGR/pasted-image-1775595833560.jpg",
+  "https://images.fillout.com/orgid-30300/flowpublicid-f4gvodhkuc/widgetid-default/cekydfjBpwdkqtEcHyvBGv/pasted-image-1775593260319.png",
+  "https://images.fillout.com/orgid-30300/flowpublicid-f4gvodhkuc/widgetid-default/bf7umvNj1UvgsBn6r1BhXj/pasted-image-1775594544677.jpeg"
+];
+---
+
+<section class="py-12 border-y border-white/10 bg-[#020617] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center relative z-20">
+    <p class="text-sm text-slate-400 uppercase tracking-widest font-semibold">Trusted by local service businesses</p>
+  </div>
+  
+  <div class="relative w-full overflow-hidden">
+    <!-- Fade Masks -->
+    <div class="absolute inset-y-0 left-0 w-16 md:w-32 z-10 pointer-events-none bg-gradient-to-r from-[#020617] to-transparent"></div>
+    <div class="absolute inset-y-0 right-0 w-16 md:w-32 z-10 pointer-events-none bg-gradient-to-l from-[#020617] to-transparent"></div>
+    
+    <div class="marquee-scroller w-max flex" style="mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);">
+      <div class="flex items-center justify-center gap-16 md:gap-24 px-8 md:px-12">
+        {logos.map((logo) => ( <img src={logo} alt="Logo" class="h-12 w-auto max-w-[160px] object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy" /> ))}
+      </div>
+      <div class="flex items-center justify-center gap-16 md:gap-24 px-8 md:px-12">
+        {logos.map((logo) => ( <img src={logo} alt="Logo" class="h-12 w-auto max-w-[160px] object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy" /> ))}
+      </div>
+      <div class="flex items-center justify-center gap-16 md:gap-24 px-8 md:px-12">
+        {logos.map((logo) => ( <img src={logo} alt="Logo" class="h-12 w-auto max-w-[160px] object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy" /> ))}
+      </div>
+      <div class="flex items-center justify-center gap-16 md:gap-24 px-8 md:px-12">
+        {logos.map((logo) => ( <img src={logo} alt="Logo" class="h-12 w-auto max-w-[160px] object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500" loading="lazy" /> ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-scroller {
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-scroller:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+</style>
