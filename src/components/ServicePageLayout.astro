@@ -92,10 +92,10 @@ const schemaText = schemaData ? JSON.stringify(schemaData) : '';
 
           <!-- CTA Buttons -->
           <div class="mt-8 flex flex-wrap gap-4">
-            <a href="https://calendar.app.google/RUTjw3N7Afe95Tkk8" target="_blank" rel="noopener noreferrer" class="bg-accent hover:bg-accent/90 text-foreground rounded-full px-8 h-12 font-semibold flex items-center justify-center">
+            <a href="https://calendar.app.google/RUTjw3N7Afe95Tkk8" target="_blank" rel="noopener noreferrer" class="bg-accent hover:bg-accent/90 text-white rounded-full px-8 h-12 font-semibold flex items-center justify-center">
               📅 Book a Time to Talk
             </a>
-            <a href="/#contact" class="border border-white/30 hover:bg-white/10 text-foreground rounded-full px-8 h-12 font-semibold flex items-center justify-center">
+            <a href="/#contact" class="border border-foreground/30 hover:bg-foreground/5 text-foreground rounded-full px-8 h-12 font-semibold flex items-center justify-center">
               Get a Free Consultation &rarr;
             </a>
           </div>
@@ -136,22 +136,22 @@ const schemaText = schemaData ? JSON.stringify(schemaData) : '';
         <div class="lg:col-span-1">
           <div class="sticky top-24 space-y-6">
             <!-- Key Benefits Card -->
-            <div class="bg-primary rounded-2xl p-7 text-foreground">
+            <div class="bg-primary rounded-2xl p-7 text-white">
               <h3 class="font-bold text-lg mb-5">Key Benefits</h3>
               <ul class="space-y-3">
                 {benefits.map(benefit => (
                   <li class="flex items-start gap-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-foreground w-4 h-4 mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span class="text-foreground/85 text-sm">{benefit}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white w-4 h-4 mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-white/85 text-sm">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <!-- Ready to Get Started Card -->
-            <div class="bg-accent rounded-2xl p-7 text-foreground">
+            <div class="bg-accent rounded-2xl p-7 text-white">
               <h3 class="font-bold text-lg mb-3">Ready to Get Started?</h3>
-              <p class="text-foreground/80 text-sm mb-5">Talk to our specialists and get a custom strategy built around your business goals.</p>
+              <p class="text-white/80 text-sm mb-5">Talk to our specialists and get a custom strategy built around your business goals.</p>
               <a href="/#contact" class="flex items-center justify-center w-full bg-white text-accent hover:bg-white/90 rounded-xl font-bold py-2.5">
                 Book Free Consultation
               </a>
