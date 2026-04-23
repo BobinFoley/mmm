@@ -88,7 +88,7 @@ const renderMarkdown = (text: string) => {
     let p = block;
     p = p.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>');
     return `<p class="text-muted-foreground leading-relaxed text-[1.05rem] mt-4">${p}</p>`;
-  }).join('\\n');
+  }).join('');
 };
 
 const renderedContent = renderMarkdown(post.content);
