@@ -11,7 +11,6 @@
 
 /** @jsxImportSource react */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { GoogleGenAI } from '@google/genai';
 
 interface Message {
   id: string;
@@ -197,44 +196,33 @@ export default function ChatWidget() {
     setLoading(true);
     
     try {
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) throw new Error("API key missing.");
-      
-      const ai = new GoogleGenAI({ apiKey });
-      
-      let sanitizedContents: any[] = [];
-      let lastRole = '';
-      
       const historyToMap = newMessages.filter(m => m.id !== 'welcome' && m.content && m.content.trim());
       
-      for (const m of historyToMap) {
-        let currentRole = m.role === 'assistant' ? 'model' : 'user';
-        if (sanitizedContents.length === 0 && currentRole === 'model') continue;
-        if (currentRole === lastRole) {
-          sanitizedContents[sanitizedContents.length - 1].parts[0].text += '\\n\\n' + m.content;
-        } else {
-          sanitizedContents.push({ role: currentRole, parts: [{ text: m.content }] });
-          lastRole = currentRole;
-        }
-      }
-      
-      if (sanitizedContents.length === 0) throw new Error("No user message.");
-
-      const responseStream = await ai.models.generateContentStream({
-        model: 'gemini-2.5-flash',
-        contents: sanitizedContents,
-        config: {
-          systemInstruction: "You are Gracie™, an AI receptionist for MicroManaged Media (founded by Bob Rutledge). You help local service contractors (HVAC, plumbers, roofers, etc.) get more leads through Google Ads, Bing Ads, Airtable CRM systems, and AI Answering Services. Be concise, professional, friendly, and helpful. Use a warm, natural tone. Do not use overly formal or robotic language. Keep your responses short and punchy, and occasionally encourage the user to provide their contact info or ask about a free audit.",
-        }
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: historyToMap }),
       });
       
-      let accumulated = '';
-      for await (const chunk of responseStream) {
-        if (chunk.text) {
-          accumulated += chunk.text;
-          setMessages((prev) => prev.map((m) => m.id === assistantId ? { ...m, content: accumulated } : m));
-        }
+      if (!res.ok) {
+        throw new Error('Chat API error');
       }
+      
+      const reader = res.body?.getReader();
+      if (!reader) throw new Error('No stream returned');
+      
+      const decoder = new TextDecoder();
+      let accumulated = '';
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        const chunk = decoder.decode(value, { stream: true });
+        accumulated += chunk;
+        setMessages((prev) => prev.map((m) => m.id === assistantId ? { ...m, content: accumulated } : m));
+      }
+      
       setMessages((prev) => prev.map((m) => m.id === assistantId ? { ...m, streaming: false } : m));
     } catch(err: any) {
       console.error(err);
