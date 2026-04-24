@@ -137,22 +137,22 @@ const schemaText = schemaData ? JSON.stringify(schemaData) : '';
           <div class="sticky top-24 space-y-6">
             <!-- Key Benefits Card -->
             <div class="bg-primary rounded-2xl p-7 text-white">
-              <h3 class="font-bold text-lg mb-5">Key Benefits</h3>
-              <ul class="space-y-3">
+              <h3 class="font-black text-xl mb-5">Key Benefits</h3>
+              <ul class="space-y-4">
                 {benefits.map(benefit => (
-                  <li class="flex items-start gap-2.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white w-4 h-4 mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span class="text-white/85 text-sm">{benefit}</span>
+                  <li class="flex items-start gap-3 text-base">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-white w-5 h-5 shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span class="text-white font-medium">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <!-- Ready to Get Started Card -->
-            <div class="bg-accent rounded-2xl p-7 text-white">
-              <h3 class="font-bold text-lg mb-3">Ready to Get Started?</h3>
-              <p class="text-white/80 text-sm mb-5">Talk to our specialists and get a custom strategy built around your business goals.</p>
-              <a href="/#contact" class="flex items-center justify-center w-full bg-white text-accent hover:bg-white/90 rounded-xl font-bold py-2.5">
+            <div class="bg-accent rounded-2xl p-7 text-white mt-6">
+              <h3 class="font-black text-xl mb-4">Ready to Get Started?</h3>
+              <p class="text-white text-base font-medium mb-6">Talk to our specialists and get a custom strategy built around your business goals.</p>
+              <a href="/#contact" class="flex items-center justify-center w-full bg-white text-accent hover:bg-white/90 rounded-xl font-bold py-3.5 text-lg">
                 Book Free Consultation
               </a>
             </div>
